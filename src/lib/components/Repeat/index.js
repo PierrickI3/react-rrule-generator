@@ -25,33 +25,27 @@ const Repeat = ({
   const isOptionSelected = option => frequency === option;
 
   return (
-    <div className="px-3">
-      <div className="form-group row">
-        <div className="col-sm-2 text-sm-right">
-          <label
-            htmlFor={`${id}-frequency`}
-            className="col-form-label"
-          >
-            <strong>
-              {translateLabel(translations, 'repeat.label')}
-            </strong>
-          </label>
-        </div>
-        <div className="col-sm-6">
-          <select
-            name="repeat.frequency"
-            id={`${id}-frequency`}
-            className="form-control"
-            value={frequency}
-            onChange={handleChange}
-          >
-            {isOptionAvailable('Yearly') && <option value="Yearly">{translateLabel(translations, 'repeat.yearly.label')}</option>}
-            {isOptionAvailable('Monthly') && <option value="Monthly">{translateLabel(translations, 'repeat.monthly.label')}</option>}
-            {isOptionAvailable('Weekly') && <option value="Weekly">{translateLabel(translations, 'repeat.weekly.label')}</option>}
-            {isOptionAvailable('Daily') && <option value="Daily">{translateLabel(translations, 'repeat.daily.label')}</option>}
-            {isOptionAvailable('Hourly') && <option value="Hourly">{translateLabel(translations, 'repeat.hourly.label')}</option>}
-          </select>
-        </div>
+    <div>
+      <div className="form-group">
+        <label
+          htmlFor={`${id}-frequency`}
+          className="col-form-label"
+        >
+          {translateLabel(translations, 'repeat.label')}
+        </label>
+        <select
+          name="repeat.frequency"
+          id={`${id}-frequency`}
+          className="form-control"
+          value={frequency}
+          onChange={handleChange}
+        >
+          {isOptionAvailable('Yearly') && <option value="Yearly">{translateLabel(translations, 'repeat.yearly.label')}</option>}
+          {isOptionAvailable('Monthly') && <option value="Monthly">{translateLabel(translations, 'repeat.monthly.label')}</option>}
+          {isOptionAvailable('Weekly') && <option value="Weekly">{translateLabel(translations, 'repeat.weekly.label')}</option>}
+          {isOptionAvailable('Daily') && <option value="Daily">{translateLabel(translations, 'repeat.daily.label')}</option>}
+          {isOptionAvailable('Hourly') && <option value="Hourly">{translateLabel(translations, 'repeat.hourly.label')}</option>}
+        </select>
       </div>
 
       {

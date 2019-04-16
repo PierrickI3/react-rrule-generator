@@ -22,11 +22,12 @@ const RepeatMonthly = ({
 
   return (
     <div>
-      <div className="form-group row d-flex align-items-sm-center">
-        <div className="col-sm-1 offset-sm-2">
+
+      <div className="form-group form-row d-flex align-items-center">
+        <div className="col-form-label col-3 text-capitalize ">
           {translateLabel(translations, 'repeat.monthly.every')}
         </div>
-        <div className="col-sm-3">
+        <div className="input-group offset-1 col-8">
           <input
             id={`${id}-interval`}
             name="repeat.monthly.interval"
@@ -35,11 +36,12 @@ const RepeatMonthly = ({
             value={interval}
             onChange={numericalFieldHandler(handleChange)}
           />
-        </div>
-        <div className="col-sm-1">
-          {translateLabel(translations, 'repeat.monthly.months')}
+          <div className="input-group-append">
+            <span className="input-group-text">{translateLabel(translations, 'repeat.monthly.months')}</span>
+          </div>
         </div>
       </div>
+
 
       {isOptionAvailable('on') && (
         <RepeatMonthlyOn
@@ -49,6 +51,7 @@ const RepeatMonthly = ({
           hasMoreModes={!isTheOnlyOneMode('on')}
           handleChange={handleChange}
           translations={translations}
+
         />
       )}
       {isOptionAvailable('on the') && (
@@ -61,6 +64,8 @@ const RepeatMonthly = ({
           translations={translations}
         />
       )}
+
+
 
     </div>
   );

@@ -11,11 +11,11 @@ const RepeatDaily = ({
   handleChange,
   translations
 }) => (
-  <div className="form-group row d-flex align-items-sm-center">
-    <div className="col-sm-1 offset-sm-2">
+  <div className="form-group form-row d-flex align-items-center">
+    <div className="form-control-label col-3 text-capitalize ">
       {translateLabel(translations, 'repeat.daily.every')}
     </div>
-    <div className="col-sm-2">
+    <div className="input-group offset-1 col-8">
       <input
         id={`${id}-interval`}
         name="repeat.daily.interval"
@@ -24,11 +24,10 @@ const RepeatDaily = ({
         value={interval}
         onChange={numericalFieldHandler(handleChange)}
       />
+      <div className="input-group-append">
+        <span className="input-group-text">{translateLabel(translations, 'repeat.daily.days')}</span>
+      </div>
     </div>
-    <div className="col-sm-1">
-      {translateLabel(translations, 'repeat.daily.days')}
-    </div>
-
   </div>
 );
 RepeatDaily.propTypes = {

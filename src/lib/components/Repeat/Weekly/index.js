@@ -20,12 +20,12 @@ const RepeatWeekly = ({
   }
 
   return (
-    <div className="px-3">
-      <div className="form-group row d-flex align-items-sm-center">
-        <div className="col-sm-1 offset-sm-2">
+    <div>
+      <div className="form-group form-row d-flex align-items-center">
+        <div className="form-control-label col-3 text-capitalize ">
           {translateLabel(translations, 'repeat.weekly.every')}
         </div>
-        <div className="col-sm-3">
+        <div className="input-group offset-1 col-8">
           <input
             id={`${id}-interval`}
             name="repeat.weekly.interval"
@@ -34,19 +34,19 @@ const RepeatWeekly = ({
             value={interval}
             onChange={numericalFieldHandler(handleChange)}
           />
-        </div>
-        <div className="col-sm-1">
-          {translateLabel(translations, 'repeat.weekly.weeks')}
+          <div className="input-group-append">
+            <span className="input-group-text">{translateLabel(translations, 'repeat.weekly.weeks')}</span>
+          </div>
         </div>
       </div>
 
-      <div className="form-group row">
-        <div className="btn-group btn-group-toggle offset-sm-2">
+      <div className="form-group">
+        <div className="btn-group btn-group-toggle">
           {daysArray.map(([dayName, isDayActive]) => (
             <label
               htmlFor={`${id}-${dayName}`}
               key={dayName}
-              className={`btn btn-primary ${isDayActive ? 'active' : ''}`}
+              className={`btn btn-info ${isDayActive ? 'active' : ''}`}
             >
               <input
                 type="checkbox"

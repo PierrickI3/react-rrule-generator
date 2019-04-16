@@ -28,7 +28,10 @@ const EndOnDate = ({
   };
 
   return (
-    <div className="col-6 col-sm-3">
+    <div className="form-group col-9 ">
+      <div className="col-form-label text-capitalize ">
+        Date
+      </div>
       {
         CustomCalendar
           ? <CustomCalendar

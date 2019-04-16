@@ -20,19 +20,15 @@ const End = ({
   const isOptionSelected = option => mode === option;
 
   return (
-    <div className="px-3">
-      <div className="form-group row">
-        <div className="col-sm-2 text-sm-right">
+    <div>
+      <div className="form-row d-flex align-items-center">
+        <div className="form-group col-3">
           <label
             htmlFor={id}
             className="col-form-label"
           >
-            <strong>
-              {translateLabel(translations, 'end.label')}
-            </strong>
+            {translateLabel(translations, 'end.label')}
           </label>
-        </div>
-        <div className="col-sm-3">
           <select
             name="end.mode"
             id={id}
@@ -64,7 +60,6 @@ const End = ({
             translations={translations}
           />
         }
-
       </div>
     </div>
   );
