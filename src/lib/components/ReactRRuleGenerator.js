@@ -64,7 +64,6 @@ class ReactRRuleGenerator extends PureComponent {
 
     return (
       <div>
-
         {
           !options.hideError && error && (
             <div className="alert alert-danger">
@@ -73,46 +72,42 @@ class ReactRRuleGenerator extends PureComponent {
           )
         }
 
-        <div className="col">
+        {
+          !options.hideStart && (
+            <div>
+              <Start
+                id={`${id}-start`}
+                start={start}
+                handleChange={this.handleChange}
+                translations={this.props.translations}
+              />
+              <hr />
+            </div>
+          )
+        }
 
-          {
-            !options.hideStart && (
-              <div>
-                <Start
-                  id={`${id}-start`}
-                  start={start}
-                  handleChange={this.handleChange}
-                  translations={this.props.translations}
-                />
-                <hr />
-              </div>
-            )
-          }
-
-          <div>
-            <Repeat
-              id={`${id}-repeat`}
-              repeat={repeat}
-              handleChange={this.handleChange}
-              translations={this.props.translations}
-            />
-          </div>
-
-          {
-            !options.hideEnd && (
-              <div>
-                <hr />
-                <End
-                  id={`${id}-end`}
-                  end={end}
-                  handleChange={this.handleChange}
-                  translations={this.props.translations}
-                />
-              </div>
-            )
-          }
-
+        <div>
+          <Repeat
+            id={`${id}-repeat`}
+            repeat={repeat}
+            handleChange={this.handleChange}
+            translations={this.props.translations}
+          />
         </div>
+
+        {
+          !options.hideEnd && (
+            <div>
+              <hr />
+              <End
+                id={`${id}-end`}
+                end={end}
+                handleChange={this.handleChange}
+                translations={this.props.translations}
+              />
+            </div>
+          )
+        }
       </div>
     );
   }
