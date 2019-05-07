@@ -18,7 +18,7 @@ const Start = ({
         htmlFor={id}
         className="col-form-label"
       >
-        {translateLabel(translations, 'start.label')} pippo
+        {translateLabel(translations, 'start.label')}
       </label>
       <StartOnDate id={id} onDate={onDate} handleChange={handleChange} translations={translations} />
     </div>
