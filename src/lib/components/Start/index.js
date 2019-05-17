@@ -12,16 +12,11 @@ const Start = ({
   handleChange,
   translations
 }) => (
-  <div>
-    <div className="form-group ">
-      <label
-        htmlFor={id}
-        className="col-form-label"
-      >
-        {translateLabel(translations, 'start.label')}
-      </label>
-      <StartOnDate id={id} onDate={onDate} handleChange={handleChange} translations={translations} />
-    </div>
+  <div className="form-group">
+    <label htmlFor={id} className="col-form-label text-boldy">
+      {translateLabel(translations, 'start.label')}
+    </label>
+    <StartOnDate id={id} onDate={onDate} handleChange={handleChange} translations={translations} />
   </div>
 );
 

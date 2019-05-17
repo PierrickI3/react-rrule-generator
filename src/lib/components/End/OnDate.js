@@ -28,8 +28,8 @@ const EndOnDate = ({
   };
 
   return (
-    <div className="form-group col-9 ">
-      <div className="col-form-label text-capitalize ">
+    <div className="col-9 ">
+      <div className="col-form-label text-capitalize text-boldy">
         Date
       </div>
       {

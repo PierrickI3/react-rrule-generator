@@ -14,7 +14,7 @@ const StartOnDate = ({
     options,
   },
   handleChange,
-  translations
+  translations,
 }) => {
   const CustomCalendar = options.calendarComponent;
   const locale = options.weekStartsOnSunday ? 'en-ca' : 'en-gb';
@@ -29,8 +29,8 @@ const StartOnDate = ({
   return (
     <div>
       {
-        CustomCalendar
-          ? <CustomCalendar
+        CustomCalendar ? (
+          <CustomCalendar
             key={`${id}-calendar`}
             {...calendarAttributes}
             onChange={(event) => {
@@ -44,32 +44,34 @@ const StartOnDate = ({
               handleChange(editedEvent);
             }}
           />
-          : <DateTime
-            {...calendarAttributes}
-            inputProps={
-              {
-                id: `${id}-datetime`,
-                name: 'start.onDate.date',
-                readOnly: true,
-              }
+      ) : (
+        <DateTime
+          {...calendarAttributes}
+          inputProps={
+            {
+              id: `${id}-datetime`,
+              name: 'start.onDate.date',
+              readOnly: true,
             }
-            locale={translateLabel(translations, 'locale')}
-            timeFormat={false}
-            viewMode="days"
-            closeOnSelect
-            closeOnTab
-            required
-            onChange={(inputDate) => {
-              const editedEvent = {
-                target: {
-                  value: moment(inputDate).format(DATE_TIME_FORMAT),
-                  name: 'start.onDate.date',
-                },
-              };
+          }
+          locale={translateLabel(translations, 'locale')}
+          timeFormat={false}
+          viewMode="days"
+          closeOnSelect
+          closeOnTab
+          required
+          onChange={(inputDate) => {
+            const editedEvent = {
+              target: {
+                value: moment(inputDate).format(DATE_TIME_FORMAT),
+                name: 'start.onDate.date',
+              },
+            };
 
-              handleChange(editedEvent);
-            }}
-          />
+            handleChange(editedEvent);
+          }}
+        />
+        )
       }
     </div>
   );

@@ -9,8 +9,8 @@ const EndAfter = ({
   handleChange,
   translations
 }) => (
-  <div className="form-group col-9 ">
-    <div className="col-form-label text-capitalize ">
+  <div className="col-9 ">
+    <div className="col-form-label text-capitalize text-boldy">
       {translateLabel(translations, 'end.executions')}
     </div>
     <input

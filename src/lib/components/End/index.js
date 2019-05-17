@@ -20,12 +20,12 @@ const End = ({
   const isOptionSelected = option => mode === option;
 
   return (
-    <div>
+    <div className="form-group">
       <div className="form-row d-flex align-items-center">
-        <div className="form-group col-3">
+        <div className="col-3">
           <label
             htmlFor={id}
-            className="col-form-label"
+            className="col-form-label text-boldy"
           >
             {translateLabel(translations, 'end.label')}
           </label>
@@ -51,6 +51,7 @@ const End = ({
             translations={translations}
           />
         }
+
         {
           isOptionSelected('On date') &&
           <EndOnDate

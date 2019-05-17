@@ -14,9 +14,9 @@ const RepeatMonthlyOn = ({
   const isActive = mode === 'on';
 
   return (
-    <div className={`${!isActive && 'opacity-50'}`}>
+    <React.Fragment>
       <div className="form-row d-flex align-items-center">
-        <div className="form-group col-3">
+        <div className="col-3">
           {hasMoreModes && (
             <div className="custom-control custom-radio custom-control-inline">
               <input
@@ -29,14 +29,14 @@ const RepeatMonthlyOn = ({
                 onChange={handleChange}
                 className="custom-control-input"
               />
-              <label htmlFor={id} className="custom-control-label text-capitalize ">
+              <label htmlFor={id} className="custom-control-label text-capitalize text-boldy">
                 {translateLabel(translations, 'repeat.monthly.on_day')}
               </label>
             </div>
           )}
         </div>
 
-        <div className="form-group col-4 offset-1">
+        <div className={`col-4 offset-1 ${!isActive && 'opacity-50'}`}>
           <select
             id={`${id}-day`}
             name="repeat.monthly.on.day"
@@ -50,7 +50,7 @@ const RepeatMonthlyOn = ({
           </select>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 RepeatMonthlyOn.propTypes = {

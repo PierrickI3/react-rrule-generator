@@ -62,7 +62,7 @@ class ReactRRuleGenerator extends PureComponent {
     } = this.state;
 
     return (
-      <div>
+      <div className="react-rrule-generator">
         {
           !options.hideError && error && (
             <div className="alert alert-danger">
@@ -73,31 +73,25 @@ class ReactRRuleGenerator extends PureComponent {
 
         {
           !options.hideStart && (
-            <div>
-              <Start
-                id={`${id}-start`}
-                start={start}
-                handleChange={this.handleChange}
-                translations={this.props.translations}
-              />
-              <hr />
-            </div>
+            <Start
+              id={`${id}-start`}
+              start={start}
+              handleChange={this.handleChange}
+              translations={this.props.translations}
+            />
           )
         }
 
-        <div>
-          <Repeat
-            id={`${id}-repeat`}
-            repeat={repeat}
-            handleChange={this.handleChange}
-            translations={this.props.translations}
-          />
-        </div>
+        <Repeat
+          id={`${id}-repeat`}
+          repeat={repeat}
+          handleChange={this.handleChange}
+          translations={this.props.translations}
+        />
 
         {
           !options.hideEnd && (
             <div>
-              <hr />
               <End
                 id={`${id}-end`}
                 end={end}

@@ -19,7 +19,7 @@ const RepeatYearlyOn = ({
   const isActive = mode === 'on';
 
   return (
-    <div className={`${!isActive && 'opacity-50'}`}>
+    <div>
       <div className="form-row d-flex align-items-center">
         <div className="form-group col-3">
           {hasMoreModes && (
@@ -41,7 +41,7 @@ const RepeatYearlyOn = ({
           )}
         </div>
 
-        <div className="form-group col-4 offset-1">
+        <div className={`form-group col-4 offset-1 ${!isActive && 'opacity-50'}`}>
           <select
             id={`${id}-month`}
             name="repeat.yearly.on.month"
@@ -51,10 +51,10 @@ const RepeatYearlyOn = ({
             disabled={!isActive}
             onChange={handleChange}
           >
-            {MONTHS.map(month => <option key={month} value={month}>{translateLabel(translations, `months.${month.toLowerCase()}`)}</option>)}
+            { MONTHS.map(month => <option key={month} value={month}>{translateLabel(translations, `months.${month.toLowerCase()}`)}</option>)}
           </select>
         </div>
-        <div className="form-group col-4">
+        <div className={`form-group col-4 ${!isActive && 'opacity-50'}`}>
           <select
             id={`${id}-day`}
             name="repeat.yearly.on.day"
@@ -64,7 +64,7 @@ const RepeatYearlyOn = ({
             disabled={!isActive}
             onChange={numericalFieldHandler(handleChange)}
           >
-            {range(0, daysInMonth).map((i) => (
+            {range(0, daysInMonth).map(i => (
               <option key={i} value={i + 1}>{i + 1}</option>
             ))}
           </select>

@@ -35,18 +35,19 @@ const RepeatWeekly = ({
             onChange={numericalFieldHandler(handleChange)}
           />
           <div className="input-group-append">
-            <span className="input-group-text">{translateLabel(translations, 'repeat.weekly.weeks')}</span>
+            <span className="input-group-text text-sm text-boldy">{translateLabel(translations, 'repeat.weekly.weeks')}</span>
           </div>
         </div>
       </div>
 
       <div className="form-group">
-        <div className="btn-group btn-group-toggle">
+        <div>Day of the week</div>
+        <div className="btn-group btn-group-toggle d-flex">
           {daysArray.map(([dayName, isDayActive]) => (
             <label
               htmlFor={`${id}-${dayName}`}
               key={dayName}
-              className={`btn btn-info ${isDayActive ? 'active' : ''}`}
+              className={`col btn btn-info ${isDayActive ? 'active' : ''}`}
             >
               <input
                 type="checkbox"

@@ -25,14 +25,12 @@ const Repeat = ({
   const isOptionSelected = option => frequency === option;
 
   return (
-    <div>
+    <div className="form-group">
       <div className="form-group">
-        <label
-          htmlFor={`${id}-frequency`}
-          className="col-form-label"
-        >
+        <label htmlFor={`${id}-frequency`} className="col-form-label text-boldy">
           {translateLabel(translations, 'repeat.label')}
         </label>
+
         <select
           name="repeat.frequency"
           id={`${id}-frequency`}
@@ -48,52 +46,53 @@ const Repeat = ({
         </select>
       </div>
 
-      {
-        isOptionSelected('Yearly') &&
-        <RepeatYearly
-          id={`${id}-yearly`}
-          yearly={yearly}
-          handleChange={handleChange}
-          translations={translations}
-        />
-      }
-      {
-        isOptionSelected('Monthly') &&
-        <RepeatMonthly
-          id={`${id}-monthly`}
-          monthly={monthly}
-          handleChange={handleChange}
-          translations={translations}
-        />
-      }
-      {
-        isOptionSelected('Weekly') &&
-        <RepeatWeekly
-          id={`${id}-weekly`}
-          weekly={weekly}
-          handleChange={handleChange}
-          translations={translations}
-        />
-      }
-      {
-        isOptionSelected('Daily') &&
-        <RepeatDaily
-          id={`${id}-daily`}
-          daily={daily}
-          handleChange={handleChange}
-          translations={translations}
-        />
-      }
-      {
-        isOptionSelected('Hourly') &&
-        <RepeatHourly
-          id={`${id}-hourly`}
-          hourly={hourly}
-          handleChange={handleChange}
-          translations={translations}
-        />
-      }
-
+      <div className="form-group">
+        {
+          isOptionSelected('Yearly') &&
+          <RepeatYearly
+            id={`${id}-yearly`}
+            yearly={yearly}
+            handleChange={handleChange}
+            translations={translations}
+          />
+        }
+        {
+          isOptionSelected('Monthly') &&
+          <RepeatMonthly
+            id={`${id}-monthly`}
+            monthly={monthly}
+            handleChange={handleChange}
+            translations={translations}
+          />
+        }
+        {
+          isOptionSelected('Weekly') &&
+          <RepeatWeekly
+            id={`${id}-weekly`}
+            weekly={weekly}
+            handleChange={handleChange}
+            translations={translations}
+          />
+        }
+        {
+          isOptionSelected('Daily') &&
+          <RepeatDaily
+            id={`${id}-daily`}
+            daily={daily}
+            handleChange={handleChange}
+            translations={translations}
+          />
+        }
+        {
+          isOptionSelected('Hourly') &&
+          <RepeatHourly
+            id={`${id}-hourly`}
+            hourly={hourly}
+            handleChange={handleChange}
+            translations={translations}
+          />
+        }
+      </div>
     </div>
   );
 };

@@ -15,19 +15,19 @@ const RepeatMonthly = ({
     options,
   },
   handleChange,
-  translations
+  translations,
 }) => {
   const isTheOnlyOneMode = option => options.modes === option;
   const isOptionAvailable = option => !options.modes || isTheOnlyOneMode(option);
 
   return (
-    <div>
+    <React.Fragment>
 
       <div className="form-group form-row d-flex align-items-center">
-        <div className="col-form-label col-3 text-capitalize ">
+        <div className="col-form-label col-3 text-capitalize text-boldy">
           {translateLabel(translations, 'repeat.monthly.every')}
         </div>
-        <div className="input-group offset-1 col-8">
+        <div className="input-group offset-1 col-4">
           <input
             id={`${id}-interval`}
             name="repeat.monthly.interval"
@@ -37,37 +37,40 @@ const RepeatMonthly = ({
             onChange={numericalFieldHandler(handleChange)}
           />
           <div className="input-group-append">
-            <span className="input-group-text">{translateLabel(translations, 'repeat.monthly.months')}</span>
+            <span className="input-group-text text-sm text-boldy">{translateLabel(translations, 'repeat.monthly.months')}</span>
           </div>
         </div>
       </div>
 
+      <div className="form-group">
+        {isOptionAvailable('on') && (
+          <RepeatMonthlyOn
+            id={`${id}-on`}
+            mode={mode}
+            on={on}
+            hasMoreModes={!isTheOnlyOneMode('on')}
+            handleChange={handleChange}
+            translations={translations}
 
-      {isOptionAvailable('on') && (
-        <RepeatMonthlyOn
-          id={`${id}-on`}
-          mode={mode}
-          on={on}
-          hasMoreModes={!isTheOnlyOneMode('on')}
-          handleChange={handleChange}
-          translations={translations}
+          />
+        )}
+      </div>
 
-        />
-      )}
-      {isOptionAvailable('on the') && (
-        <RepeatMonthlyOnThe
-          id={`${id}-onThe`}
-          mode={mode}
-          onThe={onThe}
-          hasMoreModes={!isTheOnlyOneMode('on the')}
-          handleChange={handleChange}
-          translations={translations}
-        />
-      )}
+      <div className="form-group">
+        {isOptionAvailable('on the') && (
+          <RepeatMonthlyOnThe
+            id={`${id}-onThe`}
+            mode={mode}
+            onThe={onThe}
+            hasMoreModes={!isTheOnlyOneMode('on the')}
+            handleChange={handleChange}
+            translations={translations}
+          />
+        )}
+      </div>
 
+    </React.Fragment>
 
-
-    </div>
   );
 };
 

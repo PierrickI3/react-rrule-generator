@@ -15,7 +15,7 @@ const RepeatYearlyOnThe = ({
   const isActive = mode === 'on the';
 
   return (
-    <div className={`${!isActive && 'opacity-50'}`}>
+    <div>
       <div className="form-row d-flex align-items-center">
         <div className="form-group col-3">
           {hasMoreModes && (
@@ -37,7 +37,7 @@ const RepeatYearlyOnThe = ({
           )}
         </div>
 
-        <div className="form-group col-4 offset-1">
+        <div className={`form-group col-4 offset-1 ${!isActive && 'opacity-50'}`}>
           <select
             id={`${id}-which`}
             name="repeat.yearly.onThe.which"
@@ -56,7 +56,7 @@ const RepeatYearlyOnThe = ({
         </div>
 
 
-        <div className="form-group col-4">
+        <div className={`form-group col-4 ${!isActive && 'opacity-50'}`}>
           <select
             id={`${id}-day`}
             name="repeat.yearly.onThe.day"
@@ -81,7 +81,7 @@ const RepeatYearlyOnThe = ({
               id={`${id}-month`}
               name="repeat.yearly.onThe.month"
               aria-label="Repeat yearly on the month"
-              className="form-control"
+              className="custom-select"
               value={onThe.month}
               disabled={!isActive}
               onChange={handleChange}
