@@ -22,7 +22,7 @@ const Repeat = ({
   return (
     <React.Fragment>
       <div className="form-group form-row">
-        <label htmlFor={`${id}-frequency`} className="col-form-label col-4">
+        <label htmlFor={`${id}-frequency`} className="col-form-label col-3">
           {translateLabel(translations, 'repeat.label')}
         </label>
         <div className="col-8">

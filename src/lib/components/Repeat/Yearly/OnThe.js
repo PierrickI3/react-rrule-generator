@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import { MONTHS, DAYS } from '../../../constants/index';
-import translateLabel from '../../../utils/translateLabel';
+import { MONTHS, DAYS } from "../../../constants/index";
+import translateLabel from "../../../utils/translateLabel";
 
 const RepeatYearlyOnThe = ({
   id,
@@ -10,14 +10,14 @@ const RepeatYearlyOnThe = ({
   onThe,
   hasMoreModes,
   handleChange,
-  translations,
+  translations
 }) => {
-  const isActive = mode === 'on the';
+  const isActive = mode === "on the";
 
   return (
     <React.Fragment>
       <div className="form-group form-row align-items-center">
-        <div className="col-4">
+        <div className="col-3">
           {hasMoreModes && (
             <div className="custom-control custom-radio custom-control-inline">
               <input
@@ -34,13 +34,13 @@ const RepeatYearlyOnThe = ({
                 htmlFor={id}
                 className="custom-control-label text-capitalize"
               >
-                {translateLabel(translations, 'repeat.yearly.on_the')}
+                {translateLabel(translations, "repeat.yearly.on_the")}
               </label>
             </div>
           )}
         </div>
 
-        <div className={`form-group col-3 ${!isActive && 'opacity-50'}`}>
+        <div className={`form-group col-3 ${!isActive && "opacity-50"}`}>
           <select
             id={`${id}-which`}
             name="repeat.yearly.onThe.which"
@@ -51,24 +51,24 @@ const RepeatYearlyOnThe = ({
             onChange={handleChange}
           >
             <option value="First">
-              {translateLabel(translations, 'numerals.first')}
+              {translateLabel(translations, "numerals.first")}
             </option>
             <option value="Second">
-              {translateLabel(translations, 'numerals.second')}
+              {translateLabel(translations, "numerals.second")}
             </option>
             <option value="Third">
-              {translateLabel(translations, 'numerals.third')}
+              {translateLabel(translations, "numerals.third")}
             </option>
             <option value="Fourth">
-              {translateLabel(translations, 'numerals.fourth')}
+              {translateLabel(translations, "numerals.fourth")}
             </option>
             <option value="Last">
-              {translateLabel(translations, 'numerals.last')}
+              {translateLabel(translations, "numerals.last")}
             </option>
           </select>
         </div>
 
-        <div className={`form-group col-3 ${!isActive && 'opacity-50'}`}>
+        <div className={`form-group col-3 ${!isActive && "opacity-50"}`}>
           <select
             id={`${id}-day`}
             name="repeat.yearly.onThe.day"
@@ -87,11 +87,11 @@ const RepeatYearlyOnThe = ({
         </div>
       </div>
       <div className="form-row d-flex align-items-center">
-        <div className="form-group offset-4 col-8">
+        <div className="form-group offset-3 col-9">
           <div className="input-group">
             <div className="input-group-prepend">
               <span className="input-group-text">
-                {translateLabel(translations, 'repeat.yearly.of')}
+                {translateLabel(translations, "repeat.yearly.of")}
               </span>
             </div>
             <select
@@ -107,7 +107,7 @@ const RepeatYearlyOnThe = ({
                 <option key={month} value={month}>
                   {translateLabel(
                     translations,
-                    `months.${month.toLowerCase()}`,
+                    `months.${month.toLowerCase()}`
                   )}
                 </option>
               ))}
@@ -120,17 +120,17 @@ const RepeatYearlyOnThe = ({
 };
 RepeatYearlyOnThe.propTypes = {
   id: PropTypes.string.isRequired,
-  mode: PropTypes.oneOf(['on', 'on the']).isRequired,
+  mode: PropTypes.oneOf(["on", "on the"]).isRequired,
   onThe: PropTypes.shape({
-    which: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last'])
+    which: PropTypes.oneOf(["First", "Second", "Third", "Fourth", "Last"])
       .isRequired,
     month: PropTypes.oneOf(MONTHS).isRequired,
-    day: PropTypes.oneOf(DAYS).isRequired,
+    day: PropTypes.oneOf(DAYS).isRequired
   }).isRequired,
   hasMoreModes: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
-    .isRequired,
+    .isRequired
 };
 
 export default RepeatYearlyOnThe;

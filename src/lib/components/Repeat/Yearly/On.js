@@ -21,7 +21,7 @@ const RepeatYearlyOn = ({
   return (
     <React.Fragment>
       <div className="form-group form-row align-items-center">
-        <div className="col-4">
+        <div className="col-3">
           {hasMoreModes && (
             <div className="custom-control custom-radio custom-control-inline">
               <input

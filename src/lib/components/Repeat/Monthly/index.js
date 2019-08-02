@@ -20,7 +20,7 @@ const RepeatMonthly = ({
   return (
     <React.Fragment>
       <div className="form-group form-row d-flex align-items-center">
-        <div className="col-form-label col-4 text-capitalize text-boldy">
+        <div className="col-form-label col-3 text-capitalize">
           {translateLabel(translations, 'repeat.monthly.every')}
         </div>
         <div className="input-group col-4">
@@ -33,7 +33,7 @@ const RepeatMonthly = ({
             onChange={numericalFieldHandler(handleChange)}
           />
           <div className="input-group-append">
-            <span className="input-group-text text-sm text-boldy">
+            <span className="input-group-text text-sm">
               {translateLabel(translations, 'repeat.monthly.months')}
             </span>
           </div>

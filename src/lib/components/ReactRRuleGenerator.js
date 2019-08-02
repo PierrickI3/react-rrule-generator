@@ -58,7 +58,7 @@ class ReactRRuleGenerator extends PureComponent {
     } = this.state;
 
     return (
-      <div className="react-rrule-generator">
+      <div className="react-rrule-generator" style={{ width: "500px" }}>
         {!options.hideError && error && (
           <div className="alert alert-danger">
             {translateLabel(this.props.translations, "invalid_rrule", {

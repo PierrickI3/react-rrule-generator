@@ -1,15 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import EndAfter from "./After";
-import EndOnDate from "./OnDate";
+import React from 'react';
+import PropTypes from 'prop-types';
+import EndAfter from './After';
+import EndOnDate from './OnDate';
 
-import translateLabel from "../../utils/translateLabel";
+import translateLabel from '../../utils/translateLabel';
 
 const End = ({
   id,
-  end: { mode, after, onDate, options },
+  end: {
+ mode, after, onDate, options 
+},
   handleChange,
-  translations
+  translations,
 }) => {
   const isOptionAvailable = option =>
     !options.modes || options.modes.indexOf(option) !== -1;
@@ -18,8 +20,8 @@ const End = ({
   return (
     <React.Fragment>
       <div className="form-group form-row my-5">
-        <label htmlFor={id} className="col-form-label col-4">
-          {translateLabel(translations, "end.label")}
+        <label htmlFor={id} className="col-form-label col-3">
+          {translateLabel(translations, 'end.label')}
         </label>
         <div className="col-3">
           <select
@@ -29,25 +31,25 @@ const End = ({
             value={mode}
             onChange={handleChange}
           >
-            {isOptionAvailable("Never") && (
+            {isOptionAvailable('Never') && (
               <option value="Never">
-                {translateLabel(translations, "end.never")}
+                {translateLabel(translations, 'end.never')}
               </option>
             )}
-            {isOptionAvailable("After") && (
+            {isOptionAvailable('After') && (
               <option value="After">
-                {translateLabel(translations, "end.after")}
+                {translateLabel(translations, 'end.after')}
               </option>
             )}
-            {isOptionAvailable("On date") && (
+            {isOptionAvailable('On date') && (
               <option value="On date">
-                {translateLabel(translations, "end.on_date")}
+                {translateLabel(translations, 'end.on_date')}
               </option>
             )}
           </select>
         </div>
 
-        {isOptionSelected("After") && (
+        {isOptionSelected('After') && (
           <EndAfter
             id={`${id}-after`}
             after={after}
@@ -56,7 +58,7 @@ const End = ({
           />
         )}
 
-        {isOptionSelected("On date") && (
+        {isOptionSelected('On date') && (
           <EndOnDate
             id={`${id}-onDate`}
             onDate={onDate}
@@ -76,13 +78,13 @@ End.propTypes = {
     after: PropTypes.number.isRequired,
     onDate: PropTypes.object.isRequired,
     options: PropTypes.shape({
-      modes: PropTypes.arrayOf(PropTypes.oneOf(["Never", "After", "On date"])),
-      weekStartsOnSunday: PropTypes.bool
-    }).isRequired
+      modes: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
+      weekStartsOnSunday: PropTypes.bool,
+    }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
   translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
-    .isRequired
+    .isRequired,
 };
 
 export default End;

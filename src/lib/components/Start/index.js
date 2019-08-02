@@ -8,10 +8,10 @@ const Start = ({
  id, start: { onDate }, handleChange, translations 
 }) => (
   <div className="form-group form-row">
-    <label htmlFor={id} className="col-form-label col-4">
+    <label htmlFor={id} className="col-form-label col-3">
       {translateLabel(translations, 'start.label')}
     </label>
-    <div className="col-8">
+    <div className="col-9">
       <StartOnDate
         id={id}
         onDate={onDate}

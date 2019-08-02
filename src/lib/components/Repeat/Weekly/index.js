@@ -18,7 +18,7 @@ const RepeatWeekly = ({
   return (
     <React.Fragment>
       <div className="form-group form-row align-items-center">
-        <div className="form-control-label col-4 text-capitalize">
+        <div className="form-control-label col-3 text-capitalize">
           {translateLabel(translations, 'repeat.weekly.every')}
         </div>
         <div className="input-group col-4">
@@ -31,7 +31,7 @@ const RepeatWeekly = ({
             onChange={numericalFieldHandler(handleChange)}
           />
           <div className="input-group-append">
-            <span className="input-group-text text-sm text-boldy">
+            <span className="input-group-text text-sm">
               {translateLabel(translations, 'repeat.weekly.weeks')}
             </span>
           </div>
@@ -39,10 +39,10 @@ const RepeatWeekly = ({
       </div>
 
       <div className="form-group form-row align-items-center">
-        <div className="form-control-label col-4 text-capitalize">
+        <div className="form-control-label col-4 text-capitalize sr-only">
           Day of the week
         </div>
-        <div className="btn-group btn-group-sm btn-group-toggle d-flex col-8">
+        <div className="btn-group btn-group-sm btn-group-toggle d-flex col-12">
           {daysArray.map(([dayName, isDayActive]) => (
             <label
               htmlFor={`${id}-${dayName}`}

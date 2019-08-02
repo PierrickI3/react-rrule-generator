@@ -10,7 +10,7 @@ const RepeatHourly = ({
   translations,
 }) => (
   <div className="form-group form-row d-flex align-items-center">
-    <div className="col-form-label col-4 text-capitalize">
+    <div className="col-form-label col-3 text-capitalize">
       {translateLabel(translations, 'repeat.hourly.every')}
     </div>
     <div className="col-sm-2">
