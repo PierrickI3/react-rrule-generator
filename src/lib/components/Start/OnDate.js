@@ -9,10 +9,7 @@ import translateLabel from '../../utils/translateLabel';
 
 const StartOnDate = ({
   id,
-  onDate: {
-    date,
-    options,
-  },
+  onDate: { date, options },
   handleChange,
   translations,
 }) => {
@@ -28,32 +25,30 @@ const StartOnDate = ({
 
   return (
     <div>
-      {
-        CustomCalendar ? (
-          <CustomCalendar
-            key={`${id}-calendar`}
-            {...calendarAttributes}
-            onChange={(event) => {
-              const editedEvent = {
-                target: {
-                  value: event.target.value,
-                  name: 'start.onDate.date',
-                },
-              };
+      {CustomCalendar ? (
+        <CustomCalendar
+          key={`${id}-calendar`}
+          {...calendarAttributes}
+          onChange={(event) => {
+            const editedEvent = {
+              target: {
+                value: event.target.value,
+                name: 'start.onDate.date',
+              },
+            };
 
-              handleChange(editedEvent);
-            }}
-          />
+            handleChange(editedEvent);
+          }}
+        />
       ) : (
         <DateTime
           {...calendarAttributes}
-          inputProps={
-            {
-              id: `${id}-datetime`,
-              name: 'start.onDate.date',
-              readOnly: true,
-            }
-          }
+          inputProps={{
+            id: `${id}-datetime`,
+            name: 'start.onDate.date',
+            readOnly: true,
+            className: 'bg-white form-control',
+          }}
           locale={translateLabel(translations, 'locale')}
           timeFormat={false}
           viewMode="days"
@@ -71,8 +66,7 @@ const StartOnDate = ({
             handleChange(editedEvent);
           }}
         />
-        )
-      }
+      )}
     </div>
   );
 };
@@ -83,11 +77,15 @@ StartOnDate.propTypes = {
     date: PropTypes.string.isRequired,
     options: PropTypes.shape({
       weekStartsOnSunday: PropTypes.bool,
-      calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+      calendarComponent: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.func,
+      ]),
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired,
 };
 
 export default StartOnDate;
