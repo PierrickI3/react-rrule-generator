@@ -1,32 +1,30 @@
-import React, { PureComponent } from "react";
-import PropTypes from "prop-types";
-import { cloneDeep, set } from "lodash";
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { cloneDeep, set } from 'lodash';
 
-import Start from "./Start/index";
-import Repeat from "./Repeat/index";
-import End from "./End/index";
-import computeRRuleToString from "../utils/computeRRule/toString/computeRRule";
-import computeRRuleFromString from "../utils/computeRRule/fromString/computeRRule";
-import configureInitialState from "../utils/configureInitialState";
-import translateLabel from "../utils/translateLabel";
-import translations from "../translations";
-import "../styles/index.css";
+import Start from './Start/index';
+import Repeat from './Repeat/index';
+import End from './End/index';
+import computeRRuleToString from '../utils/computeRRule/toString/computeRRule';
+import computeRRuleFromString from '../utils/computeRRule/fromString/computeRRule';
+import configureInitialState from '../utils/configureInitialState';
+import translateLabel from '../utils/translateLabel';
+import translations from '../translations';
+import '../styles/index.css';
 
 class ReactRRuleGenerator extends PureComponent {
   // compute default view based on user's config
   state = configureInitialState(
     this.props.config,
     this.props.calendarComponent,
-    this.props.id
+    this.props.id,
   );
 
   componentWillMount() {
     if (this.props.onChange === ReactRRuleGenerator.defaultProps.onChange) {
       // no onChange() was provided
-      throw new Error(
-        "No onChange() function has been passed to RRuleGenerator. \n" +
-          "Please provide one, it's needed to handle generated value."
-      );
+      throw new Error('No onChange() function has been passed to RRuleGenerator. \n' +
+          "Please provide one, it's needed to handle generated value.",);
     }
 
     if (this.props.value) {
@@ -54,15 +52,17 @@ class ReactRRuleGenerator extends PureComponent {
   render() {
     const {
       id,
-      data: { start, repeat, end, options, error }
+      data: {
+ start, repeat, end, options, error 
+},
     } = this.state;
 
     return (
-      <div className="react-rrule-generator" style={{ width: "500px" }}>
+      <div className="react-rrule-generator">
         {!options.hideError && error && (
           <div className="alert alert-danger">
-            {translateLabel(this.props.translations, "invalid_rrule", {
-              value: error.value
+            {translateLabel(this.props.translations, 'invalid_rrule', {
+              value: error.value,
             })}
           </div>
         )}
@@ -99,29 +99,27 @@ class ReactRRuleGenerator extends PureComponent {
 ReactRRuleGenerator.propTypes = {
   id: PropTypes.string,
   config: PropTypes.shape({
-    frequency: PropTypes.arrayOf(
-      PropTypes.oneOf(["Yearly", "Monthly", "Weekly", "Daily", "Hourly"])
-    ),
-    yearly: PropTypes.oneOf(["on", "on the"]),
-    monthly: PropTypes.oneOf(["on", "on the"]),
-    end: PropTypes.arrayOf(PropTypes.oneOf(["Never", "After", "On date"])),
+    frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly']),),
+    yearly: PropTypes.oneOf(['on', 'on the']),
+    monthly: PropTypes.oneOf(['on', 'on the']),
+    end: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
     hideStart: PropTypes.bool,
     hideEnd: PropTypes.bool,
     hideError: PropTypes.bool,
-    weekStartsOnSunday: PropTypes.bool
+    weekStartsOnSunday: PropTypes.bool,
   }),
   value: PropTypes.string,
   onChange: PropTypes.func,
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
   id: null,
-  value: "",
+  value: '',
   config: {},
   onChange() {},
   calendarComponent: null,
-  translations: translations.english
+  translations: translations.english,
 };
 
 export default ReactRRuleGenerator;
