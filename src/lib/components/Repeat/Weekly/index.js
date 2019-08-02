@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { toPairs } from 'lodash';
-import numericalFieldHandler from '../../../utils/numericalFieldHandler';
-import translateLabel from '../../../utils/translateLabel';
+import React from "react";
+import PropTypes from "prop-types";
+import { toPairs } from "lodash";
+import numericalFieldHandler from "../../../utils/numericalFieldHandler";
+import translateLabel from "../../../utils/translateLabel";
 
 const RepeatWeekly = ({
   id,
   weekly: { interval, days, options },
   handleChange,
-  translations,
+  translations
 }) => {
   let daysArray = toPairs(days);
   if (options.weekStartsOnSunday) {
@@ -17,9 +17,9 @@ const RepeatWeekly = ({
 
   return (
     <React.Fragment>
-      <div className="form-group form-row align-items-center">
+      <div className="form-group form-row align-items-center my-3">
         <div className="form-control-label col-3 text-capitalize">
-          {translateLabel(translations, 'repeat.weekly.every')}
+          {translateLabel(translations, "repeat.weekly.every")}
         </div>
         <div className="input-group col-4">
           <input
@@ -32,23 +32,23 @@ const RepeatWeekly = ({
           />
           <div className="input-group-append">
             <span className="input-group-text text-sm">
-              {translateLabel(translations, 'repeat.weekly.weeks')}
+              {translateLabel(translations, "repeat.weekly.weeks")}
             </span>
           </div>
         </div>
       </div>
 
-      <div className="form-group form-row align-items-center">
-        <div className="form-control-label col-4 text-capitalize sr-only">
+      <div className="form-group form-row align-items-center my-3">
+        <div className="form-control-label col-3 text-capitalize">
           Day of the week
         </div>
-        <div className="btn-group btn-group-sm btn-group-toggle d-flex col-12">
+        <div className="btn-group btn-group-sm btn-group-toggle d-flex col-9">
           {daysArray.map(([dayName, isDayActive]) => (
             <label
               htmlFor={`${id}-${dayName}`}
               key={dayName}
               className={`col btn btn-outline-primary ${
-                isDayActive ? 'active' : ' '
+                isDayActive ? "active" : " "
               }`}
             >
               <input
@@ -57,14 +57,14 @@ const RepeatWeekly = ({
                 name={`repeat.weekly.days[${dayName}]`}
                 className="form-control"
                 checked={isDayActive}
-                onChange={(event) => {
+                onChange={event => {
                   const editedEvent = {
                     ...event,
                     target: {
                       ...event.target,
                       value: !isDayActive,
-                      name: event.target.name,
-                    },
+                      name: event.target.name
+                    }
                   };
 
                   handleChange(editedEvent);
@@ -72,7 +72,7 @@ const RepeatWeekly = ({
               />
               {translateLabel(
                 translations,
-                `days_short.${dayName.toLowerCase()}`,
+                `days_short.${dayName.toLowerCase()}`
               )}
             </label>
           ))}
@@ -93,15 +93,15 @@ RepeatWeekly.propTypes = {
       thu: PropTypes.bool.isRequired,
       fri: PropTypes.bool.isRequired,
       sat: PropTypes.bool.isRequired,
-      sun: PropTypes.bool.isRequired,
+      sun: PropTypes.bool.isRequired
     }).isRequired,
     options: PropTypes.shape({
-      weekStartsOnSunday: PropTypes.bool,
-    }).isRequired,
+      weekStartsOnSunday: PropTypes.bool
+    }).isRequired
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
   translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
-    .isRequired,
+    .isRequired
 };
 
 export default RepeatWeekly;

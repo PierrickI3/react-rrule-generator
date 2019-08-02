@@ -1,19 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import RepeatYearly from './Yearly/index';
-import RepeatMonthly from './Monthly/index';
-import RepeatWeekly from './Weekly/index';
-import RepeatDaily from './Daily/index';
-import RepeatHourly from './Hourly/index';
-import translateLabel from '../../utils/translateLabel';
+import React from "react";
+import PropTypes from "prop-types";
+import RepeatYearly from "./Yearly/index";
+import RepeatMonthly from "./Monthly/index";
+import RepeatWeekly from "./Weekly/index";
+import RepeatDaily from "./Daily/index";
+import RepeatHourly from "./Hourly/index";
+import translateLabel from "../../utils/translateLabel";
 
 const Repeat = ({
   id,
-  repeat: {
- frequency, yearly, monthly, weekly, daily, hourly, options 
-},
+  repeat: { frequency, yearly, monthly, weekly, daily, hourly, options },
   handleChange,
-  translations,
+  translations
 }) => {
   const isOptionAvailable = option =>
     !options.frequency || options.frequency.indexOf(option) !== -1;
@@ -21,11 +19,11 @@ const Repeat = ({
 
   return (
     <React.Fragment>
-      <div className="form-group form-row">
+      <div className="form-group form-row my-3">
         <label htmlFor={`${id}-frequency`} className="col-form-label col-3">
-          {translateLabel(translations, 'repeat.label')}
+          {translateLabel(translations, "repeat.label")}
         </label>
-        <div className="col-8">
+        <div className="col-9">
           <select
             name="repeat.frequency"
             id={`${id}-frequency`}
@@ -33,29 +31,29 @@ const Repeat = ({
             value={frequency}
             onChange={handleChange}
           >
-            {isOptionAvailable('Yearly') && (
+            {isOptionAvailable("Yearly") && (
               <option value="Yearly">
-                {translateLabel(translations, 'repeat.yearly.label')}
+                {translateLabel(translations, "repeat.yearly.label")}
               </option>
             )}
-            {isOptionAvailable('Monthly') && (
+            {isOptionAvailable("Monthly") && (
               <option value="Monthly">
-                {translateLabel(translations, 'repeat.monthly.label')}
+                {translateLabel(translations, "repeat.monthly.label")}
               </option>
             )}
-            {isOptionAvailable('Weekly') && (
+            {isOptionAvailable("Weekly") && (
               <option value="Weekly">
-                {translateLabel(translations, 'repeat.weekly.label')}
+                {translateLabel(translations, "repeat.weekly.label")}
               </option>
             )}
-            {isOptionAvailable('Daily') && (
+            {isOptionAvailable("Daily") && (
               <option value="Daily">
-                {translateLabel(translations, 'repeat.daily.label')}
+                {translateLabel(translations, "repeat.daily.label")}
               </option>
             )}
-            {isOptionAvailable('Hourly') && (
+            {isOptionAvailable("Hourly") && (
               <option value="Hourly">
-                {translateLabel(translations, 'repeat.hourly.label')}
+                {translateLabel(translations, "repeat.hourly.label")}
               </option>
             )}
           </select>
@@ -63,7 +61,7 @@ const Repeat = ({
       </div>
 
       <div className="form-group">
-        {isOptionSelected('Yearly') && (
+        {isOptionSelected("Yearly") && (
           <RepeatYearly
             id={`${id}-yearly`}
             yearly={yearly}
@@ -71,7 +69,7 @@ const Repeat = ({
             translations={translations}
           />
         )}
-        {isOptionSelected('Monthly') && (
+        {isOptionSelected("Monthly") && (
           <RepeatMonthly
             id={`${id}-monthly`}
             monthly={monthly}
@@ -79,7 +77,7 @@ const Repeat = ({
             translations={translations}
           />
         )}
-        {isOptionSelected('Weekly') && (
+        {isOptionSelected("Weekly") && (
           <RepeatWeekly
             id={`${id}-weekly`}
             weekly={weekly}
@@ -87,7 +85,7 @@ const Repeat = ({
             translations={translations}
           />
         )}
-        {isOptionSelected('Daily') && (
+        {isOptionSelected("Daily") && (
           <RepeatDaily
             id={`${id}-daily`}
             daily={daily}
@@ -95,7 +93,7 @@ const Repeat = ({
             translations={translations}
           />
         )}
-        {isOptionSelected('Hourly') && (
+        {isOptionSelected("Hourly") && (
           <RepeatHourly
             id={`${id}-hourly`}
             hourly={hourly}
@@ -112,11 +110,11 @@ Repeat.propTypes = {
   id: PropTypes.string.isRequired,
   repeat: PropTypes.shape({
     frequency: PropTypes.oneOf([
-      'Yearly',
-      'Monthly',
-      'Weekly',
-      'Daily',
-      'Hourly',
+      "Yearly",
+      "Monthly",
+      "Weekly",
+      "Daily",
+      "Hourly"
     ]).isRequired,
     yearly: PropTypes.object.isRequired,
     monthly: PropTypes.object.isRequired,
@@ -124,14 +122,16 @@ Repeat.propTypes = {
     daily: PropTypes.object.isRequired,
     hourly: PropTypes.object.isRequired,
     options: PropTypes.shape({
-      frequency: PropTypes.arrayOf(PropTypes.oneOf(['Yearly', 'Monthly', 'Weekly', 'Daily', 'Hourly']),),
-      yearly: PropTypes.oneOf(['on', 'on the']),
-      monthly: PropTypes.oneOf(['on', 'on the']),
-    }).isRequired,
+      frequency: PropTypes.arrayOf(
+        PropTypes.oneOf(["Yearly", "Monthly", "Weekly", "Daily", "Hourly"])
+      ),
+      yearly: PropTypes.oneOf(["on", "on the"]),
+      monthly: PropTypes.oneOf(["on", "on the"])
+    }).isRequired
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
   translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
-    .isRequired,
+    .isRequired
 };
 
 export default Repeat;
