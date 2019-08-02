@@ -17,7 +17,7 @@ const RepeatWeekly = ({
 
   return (
     <React.Fragment>
-      <div className="form-group form-row align-items-center my-3">
+      <div className="form-group form-row align-items-center">
         <div className="form-control-label col-3 text-capitalize">
           {translateLabel(translations, "repeat.weekly.every")}
         </div>
@@ -38,17 +38,15 @@ const RepeatWeekly = ({
         </div>
       </div>
 
-      <div className="form-group form-row align-items-center my-3">
-        <div className="form-control-label col-3 text-capitalize">
-          Day of the week
-        </div>
+      <div className="form-group form-row align-items-center">
+        <div className="form-control-label col-3">Day of the week</div>
         <div className="btn-group btn-group-sm btn-group-toggle d-flex col-9">
           {daysArray.map(([dayName, isDayActive]) => (
             <label
               htmlFor={`${id}-${dayName}`}
               key={dayName}
               style={{ width: "14.28%" }}
-              className={`btn btn-outline-primary ${
+              className={`btn btn-outline-primary px-0 ${
                 isDayActive ? "active" : " "
               }`}
             >
