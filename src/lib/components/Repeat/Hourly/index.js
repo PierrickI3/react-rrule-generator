@@ -5,14 +5,12 @@ import translateLabel from '../../../utils/translateLabel';
 
 const RepeatHourly = ({
   id,
-  hourly: {
-    interval,
-  },
+  hourly: { interval },
   handleChange,
-  translations
+  translations,
 }) => (
-  <div className="form-group row d-flex align-items-sm-center">
-    <div className="col-sm-1 offset-sm-2">
+  <div className="form-group form-row d-flex align-items-center">
+    <div className="col-form-label col-4 text-capitalize">
       {translateLabel(translations, 'repeat.hourly.every')}
     </div>
     <div className="col-sm-2">
@@ -25,7 +23,7 @@ const RepeatHourly = ({
         onChange={numericalFieldHandler(handleChange)}
       />
     </div>
-    <div className="col-sm-1">
+    <div className="text-sm">
       {translateLabel(translations, 'repeat.hourly.hours')}
     </div>
   </div>
@@ -36,7 +34,8 @@ RepeatHourly.propTypes = {
     interval: PropTypes.number.isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired,
 };
 
 export default RepeatHourly;

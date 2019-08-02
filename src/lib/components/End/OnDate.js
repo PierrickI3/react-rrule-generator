@@ -9,12 +9,9 @@ import translateLabel from '../../utils/translateLabel';
 
 const EndOnDate = ({
   id,
-  onDate: {
-    date,
-    options,
-  },
+  onDate: { date, options },
   handleChange,
-  translations
+  translations,
 }) => {
   const CustomCalendar = options.calendarComponent;
 
@@ -28,53 +25,49 @@ const EndOnDate = ({
   };
 
   return (
-    <div className="col-9 ">
-      <div className="col-form-label text-capitalize text-boldy">
-        Date
-      </div>
-      {
-        CustomCalendar
-          ? <CustomCalendar
-            key={`${id}-calendar`}
-            {...calendarAttributes}
-            onChange={(event) => {
-              const editedEvent = {
-                target: {
-                  value: event.target.value,
-                  name: 'end.onDate.date',
-                },
-              };
-
-              handleChange(editedEvent);
-            }}
-          />
-          : <DateTime
-            {...calendarAttributes}
-            inputProps={
-              {
-                id: `${id}-datetime`,
+    <div className="col-4 ">
+      <div className="col-form-label text-capitalize sr-only">Date</div>
+      {CustomCalendar ? (
+        <CustomCalendar
+          key={`${id}-calendar`}
+          {...calendarAttributes}
+          onChange={(event) => {
+            const editedEvent = {
+              target: {
+                value: event.target.value,
                 name: 'end.onDate.date',
-                readOnly: true,
-              }
-            }
-            locale={translateLabel(translations, 'locale')}
-            timeFormat={false}
-            viewMode="days"
-            closeOnSelect
-            closeOnTab
-            required
-            onChange={(inputDate) => {
-              const editedEvent = {
-                target: {
-                  value: moment(inputDate).format(DATE_TIME_FORMAT),
-                  name: 'end.onDate.date',
-                },
-              };
+              },
+            };
 
-              handleChange(editedEvent);
-            }}
-          />
-      }
+            handleChange(editedEvent);
+          }}
+        />
+      ) : (
+        <DateTime
+          {...calendarAttributes}
+          inputProps={{
+            id: `${id}-datetime`,
+            name: 'end.onDate.date',
+            readOnly: true,
+          }}
+          locale={translateLabel(translations, 'locale')}
+          timeFormat={false}
+          viewMode="days"
+          closeOnSelect
+          closeOnTab
+          required
+          onChange={(inputDate) => {
+            const editedEvent = {
+              target: {
+                value: moment(inputDate).format(DATE_TIME_FORMAT),
+                name: 'end.onDate.date',
+              },
+            };
+
+            handleChange(editedEvent);
+          }}
+        />
+      )}
     </div>
   );
 };
@@ -85,11 +78,15 @@ EndOnDate.propTypes = {
     date: PropTypes.string.isRequired,
     options: PropTypes.shape({
       weekStartsOnSunday: PropTypes.bool,
-      calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+      calendarComponent: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.func,
+      ]),
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired,
 };
 
 export default EndOnDate;

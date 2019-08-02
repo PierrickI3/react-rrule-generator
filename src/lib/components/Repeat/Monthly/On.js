@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import numericalFieldHandler from '../../../utils/numericalFieldHandler';
-import translateLabel from '../../../utils/translateLabel';
+import React from "react";
+import PropTypes from "prop-types";
+import numericalFieldHandler from "../../../utils/numericalFieldHandler";
+import translateLabel from "../../../utils/translateLabel";
 
 const RepeatMonthlyOn = ({
   id,
@@ -11,12 +11,12 @@ const RepeatMonthlyOn = ({
   handleChange,
   translations
 }) => {
-  const isActive = mode === 'on';
+  const isActive = mode === "on";
 
   return (
     <React.Fragment>
-      <div className="form-row d-flex align-items-center">
-        <div className="col-3">
+      <div className="form-group form-row d-flex align-items-center">
+        <div className="col-4">
           {hasMoreModes && (
             <div className="custom-control custom-radio custom-control-inline">
               <input
@@ -29,14 +29,17 @@ const RepeatMonthlyOn = ({
                 onChange={handleChange}
                 className="custom-control-input"
               />
-              <label htmlFor={id} className="custom-control-label text-capitalize text-boldy">
-                {translateLabel(translations, 'repeat.monthly.on_day')}
+              <label
+                htmlFor={id}
+                className="custom-control-label text-capitalize text-boldy"
+              >
+                {translateLabel(translations, "repeat.monthly.on_day")}
               </label>
             </div>
           )}
         </div>
 
-        <div className={`col-4 offset-1 ${!isActive && 'opacity-50'}`}>
+        <div className={`col-3 ${!isActive && "opacity-50"}`}>
           <select
             id={`${id}-day`}
             name="repeat.monthly.on.day"
@@ -46,7 +49,11 @@ const RepeatMonthlyOn = ({
             disabled={!isActive}
             onChange={numericalFieldHandler(handleChange)}
           >
-            {[...new Array(31)].map((day, i) => <option key={i} value={i + 1}>{i + 1}</option>)}
+            {[...new Array(31)].map((day, i) => (
+              <option key={i} value={i + 1}>
+                {i + 1}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -55,13 +62,14 @@ const RepeatMonthlyOn = ({
 };
 RepeatMonthlyOn.propTypes = {
   id: PropTypes.string.isRequired,
-  mode: PropTypes.oneOf(['on', 'on the']).isRequired,
+  mode: PropTypes.oneOf(["on", "on the"]).isRequired,
   on: PropTypes.shape({
-    day: PropTypes.number.isRequired,
+    day: PropTypes.number.isRequired
   }).isRequired,
   hasMoreModes: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired
 };
 
 export default RepeatMonthlyOn;

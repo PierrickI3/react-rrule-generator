@@ -13,15 +13,15 @@ const RepeatYearlyOn = ({
   on,
   hasMoreModes,
   handleChange,
-  translations
+  translations,
 }) => {
   const daysInMonth = moment(on.month, 'MMM').daysInMonth();
   const isActive = mode === 'on';
 
   return (
-    <div>
-      <div className="form-row d-flex align-items-center">
-        <div className="form-group col-3">
+    <React.Fragment>
+      <div className="form-group form-row align-items-center">
+        <div className="col-4">
           {hasMoreModes && (
             <div className="custom-control custom-radio custom-control-inline">
               <input
@@ -34,14 +34,17 @@ const RepeatYearlyOn = ({
                 onChange={handleChange}
                 className="custom-control-input"
               />
-              <label htmlFor={id} className="custom-control-label text-capitalize">
+              <label
+                htmlFor={id}
+                className="custom-control-label text-capitalize"
+              >
                 {translateLabel(translations, 'repeat.yearly.on')}
               </label>
             </div>
           )}
         </div>
 
-        <div className={`form-group col-4 offset-1 ${!isActive && 'opacity-50'}`}>
+        <div className={`col-3 ${!isActive && 'opacity-50'}`}>
           <select
             id={`${id}-month`}
             name="repeat.yearly.on.month"
@@ -51,10 +54,14 @@ const RepeatYearlyOn = ({
             disabled={!isActive}
             onChange={handleChange}
           >
-            { MONTHS.map(month => <option key={month} value={month}>{translateLabel(translations, `months.${month.toLowerCase()}`)}</option>)}
+            {MONTHS.map(month => (
+              <option key={month} value={month}>
+                {translateLabel(translations, `months.${month.toLowerCase()}`)}
+              </option>
+            ))}
           </select>
         </div>
-        <div className={`form-group col-4 ${!isActive && 'opacity-50'}`}>
+        <div className={`col-3 ${!isActive && 'opacity-50'}`}>
           <select
             id={`${id}-day`}
             name="repeat.yearly.on.day"
@@ -65,12 +72,14 @@ const RepeatYearlyOn = ({
             onChange={numericalFieldHandler(handleChange)}
           >
             {range(0, daysInMonth).map(i => (
-              <option key={i} value={i + 1}>{i + 1}</option>
+              <option key={i} value={i + 1}>
+                {i + 1}
+              </option>
             ))}
           </select>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 RepeatYearlyOn.propTypes = {
@@ -82,7 +91,8 @@ RepeatYearlyOn.propTypes = {
   }).isRequired,
   hasMoreModes: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired,
 };
 
 export default RepeatYearlyOn;

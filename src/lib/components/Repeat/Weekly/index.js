@@ -6,13 +6,9 @@ import translateLabel from '../../../utils/translateLabel';
 
 const RepeatWeekly = ({
   id,
-  weekly: {
-    interval,
-    days,
-    options,
-  },
+  weekly: { interval, days, options },
   handleChange,
-  translations
+  translations,
 }) => {
   let daysArray = toPairs(days);
   if (options.weekStartsOnSunday) {
@@ -20,12 +16,12 @@ const RepeatWeekly = ({
   }
 
   return (
-    <div>
-      <div className="form-group form-row d-flex align-items-center">
-        <div className="form-control-label col-3 text-capitalize ">
+    <React.Fragment>
+      <div className="form-group form-row align-items-center">
+        <div className="form-control-label col-4 text-capitalize">
           {translateLabel(translations, 'repeat.weekly.every')}
         </div>
-        <div className="input-group offset-1 col-8">
+        <div className="input-group col-4">
           <input
             id={`${id}-interval`}
             name="repeat.weekly.interval"
@@ -35,19 +31,25 @@ const RepeatWeekly = ({
             onChange={numericalFieldHandler(handleChange)}
           />
           <div className="input-group-append">
-            <span className="input-group-text text-sm text-boldy">{translateLabel(translations, 'repeat.weekly.weeks')}</span>
+            <span className="input-group-text text-sm text-boldy">
+              {translateLabel(translations, 'repeat.weekly.weeks')}
+            </span>
           </div>
         </div>
       </div>
 
-      <div className="form-group">
-        <div>Day of the week</div>
-        <div className="btn-group btn-group-toggle d-flex">
+      <div className="form-group form-row align-items-center">
+        <div className="form-control-label col-4 text-capitalize">
+          Day of the week
+        </div>
+        <div className="btn-group btn-group-sm btn-group-toggle d-flex col-8">
           {daysArray.map(([dayName, isDayActive]) => (
             <label
               htmlFor={`${id}-${dayName}`}
               key={dayName}
-              className={`col btn btn-info ${isDayActive ? 'active' : ''}`}
+              className={`col btn btn-outline-primary ${
+                isDayActive ? 'active' : ' '
+              }`}
             >
               <input
                 type="checkbox"
@@ -68,12 +70,15 @@ const RepeatWeekly = ({
                   handleChange(editedEvent);
                 }}
               />
-              {translateLabel(translations, `days_short.${dayName.toLowerCase()}`)}
-            </label>))
-          }
+              {translateLabel(
+                translations,
+                `days_short.${dayName.toLowerCase()}`,
+              )}
+            </label>
+          ))}
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
@@ -95,7 +100,8 @@ RepeatWeekly.propTypes = {
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired,
 };
 
 export default RepeatWeekly;

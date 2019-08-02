@@ -6,18 +6,16 @@ import RepeatYearlyOnThe from './OnThe';
 const RepeatYearly = ({
   id,
   yearly: {
-    mode,
-    on,
-    onThe,
-    options,
-  },
+ mode, on, onThe, options 
+},
   handleChange,
-  translations
+  translations,
 }) => {
   const isTheOnlyOneMode = option => options.modes === option;
-  const isOptionAvailable = option => !options.modes || isTheOnlyOneMode(option);
+  const isOptionAvailable = option =>
+    !options.modes || isTheOnlyOneMode(option);
   return (
-    <div>
+    <React.Fragment>
       {isOptionAvailable('on') && (
         <RepeatYearlyOn
           id={`${id}-on`}
@@ -38,7 +36,7 @@ const RepeatYearly = ({
           translations={translations}
         />
       )}
-    </div>
+    </React.Fragment>
   );
 };
 RepeatYearly.propTypes = {
@@ -52,7 +50,8 @@ RepeatYearly.propTypes = {
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired,
 };
 
 export default RepeatYearly;

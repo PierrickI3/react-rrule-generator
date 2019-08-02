@@ -10,14 +10,14 @@ const RepeatYearlyOnThe = ({
   onThe,
   hasMoreModes,
   handleChange,
-  translations
+  translations,
 }) => {
   const isActive = mode === 'on the';
 
   return (
-    <div>
-      <div className="form-row d-flex align-items-center">
-        <div className="form-group col-3">
+    <React.Fragment>
+      <div className="form-group form-row align-items-center">
+        <div className="col-4">
           {hasMoreModes && (
             <div className="custom-control custom-radio custom-control-inline">
               <input
@@ -30,14 +30,17 @@ const RepeatYearlyOnThe = ({
                 onChange={handleChange}
                 className="custom-control-input"
               />
-              <label htmlFor={id} className="custom-control-label text-capitalize">
+              <label
+                htmlFor={id}
+                className="custom-control-label text-capitalize"
+              >
                 {translateLabel(translations, 'repeat.yearly.on_the')}
               </label>
             </div>
           )}
         </div>
 
-        <div className={`form-group col-4 offset-1 ${!isActive && 'opacity-50'}`}>
+        <div className={`form-group col-3 ${!isActive && 'opacity-50'}`}>
           <select
             id={`${id}-which`}
             name="repeat.yearly.onThe.which"
@@ -47,16 +50,25 @@ const RepeatYearlyOnThe = ({
             disabled={!isActive}
             onChange={handleChange}
           >
-            <option value="First">{translateLabel(translations, 'numerals.first')}</option>
-            <option value="Second">{translateLabel(translations, 'numerals.second')}</option>
-            <option value="Third">{translateLabel(translations, 'numerals.third')}</option>
-            <option value="Fourth">{translateLabel(translations, 'numerals.fourth')}</option>
-            <option value="Last">{translateLabel(translations, 'numerals.last')}</option>
+            <option value="First">
+              {translateLabel(translations, 'numerals.first')}
+            </option>
+            <option value="Second">
+              {translateLabel(translations, 'numerals.second')}
+            </option>
+            <option value="Third">
+              {translateLabel(translations, 'numerals.third')}
+            </option>
+            <option value="Fourth">
+              {translateLabel(translations, 'numerals.fourth')}
+            </option>
+            <option value="Last">
+              {translateLabel(translations, 'numerals.last')}
+            </option>
           </select>
         </div>
 
-
-        <div className={`form-group col-4 ${!isActive && 'opacity-50'}`}>
+        <div className={`form-group col-3 ${!isActive && 'opacity-50'}`}>
           <select
             id={`${id}-day`}
             name="repeat.yearly.onThe.day"
@@ -66,16 +78,21 @@ const RepeatYearlyOnThe = ({
             disabled={!isActive}
             onChange={handleChange}
           >
-            {DAYS.map(day => <option key={day} value={day}>{translateLabel(translations, `days.${day.toLowerCase()}`)}</option>)}
+            {DAYS.map(day => (
+              <option key={day} value={day}>
+                {translateLabel(translations, `days.${day.toLowerCase()}`)}
+              </option>
+            ))}
           </select>
         </div>
-
       </div>
       <div className="form-row d-flex align-items-center">
         <div className="form-group offset-4 col-8">
           <div className="input-group">
             <div className="input-group-prepend">
-              <span className="input-group-text">{translateLabel(translations, 'repeat.yearly.of')}</span>
+              <span className="input-group-text">
+                {translateLabel(translations, 'repeat.yearly.of')}
+              </span>
             </div>
             <select
               id={`${id}-month`}
@@ -86,26 +103,34 @@ const RepeatYearlyOnThe = ({
               disabled={!isActive}
               onChange={handleChange}
             >
-              {MONTHS.map(month => <option key={month} value={month}>{translateLabel(translations, `months.${month.toLowerCase()}`)}</option>)}
+              {MONTHS.map(month => (
+                <option key={month} value={month}>
+                  {translateLabel(
+                    translations,
+                    `months.${month.toLowerCase()}`,
+                  )}
+                </option>
+              ))}
             </select>
           </div>
         </div>
       </div>
-
-    </div>
+    </React.Fragment>
   );
 };
 RepeatYearlyOnThe.propTypes = {
   id: PropTypes.string.isRequired,
   mode: PropTypes.oneOf(['on', 'on the']).isRequired,
   onThe: PropTypes.shape({
-    which: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last']).isRequired,
+    which: PropTypes.oneOf(['First', 'Second', 'Third', 'Fourth', 'Last'])
+      .isRequired,
     month: PropTypes.oneOf(MONTHS).isRequired,
     day: PropTypes.oneOf(DAYS).isRequired,
   }).isRequired,
   hasMoreModes: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired,
 };
 
 export default RepeatYearlyOnThe;

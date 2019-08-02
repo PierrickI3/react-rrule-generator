@@ -5,18 +5,20 @@ import StartOnDate from './OnDate';
 import translateLabel from '../../utils/translateLabel';
 
 const Start = ({
-  id,
-  start: {
-    onDate,
-  },
-  handleChange,
-  translations
+ id, start: { onDate }, handleChange, translations 
 }) => (
-  <div className="form-group">
-    <label htmlFor={id} className="col-form-label text-boldy">
+  <div className="form-group form-row">
+    <label htmlFor={id} className="col-form-label col-4">
       {translateLabel(translations, 'start.label')}
     </label>
-    <StartOnDate id={id} onDate={onDate} handleChange={handleChange} translations={translations} />
+    <div className="col-8">
+      <StartOnDate
+        id={id}
+        onDate={onDate}
+        handleChange={handleChange}
+        translations={translations}
+      />
+    </div>
   </div>
 );
 
@@ -26,7 +28,8 @@ Start.propTypes = {
     onDate: PropTypes.object.isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired,
 };
 
 export default Start;

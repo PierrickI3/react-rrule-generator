@@ -8,26 +8,22 @@ import translateLabel from '../../../utils/translateLabel';
 const RepeatMonthly = ({
   id,
   monthly: {
-    mode,
-    interval,
-    on,
-    onThe,
-    options,
-  },
+ mode, interval, on, onThe, options 
+},
   handleChange,
   translations,
 }) => {
   const isTheOnlyOneMode = option => options.modes === option;
-  const isOptionAvailable = option => !options.modes || isTheOnlyOneMode(option);
+  const isOptionAvailable = option =>
+    !options.modes || isTheOnlyOneMode(option);
 
   return (
     <React.Fragment>
-
       <div className="form-group form-row d-flex align-items-center">
-        <div className="col-form-label col-3 text-capitalize text-boldy">
+        <div className="col-form-label col-4 text-capitalize text-boldy">
           {translateLabel(translations, 'repeat.monthly.every')}
         </div>
-        <div className="input-group offset-1 col-4">
+        <div className="input-group col-4">
           <input
             id={`${id}-interval`}
             name="repeat.monthly.interval"
@@ -37,7 +33,9 @@ const RepeatMonthly = ({
             onChange={numericalFieldHandler(handleChange)}
           />
           <div className="input-group-append">
-            <span className="input-group-text text-sm text-boldy">{translateLabel(translations, 'repeat.monthly.months')}</span>
+            <span className="input-group-text text-sm text-boldy">
+              {translateLabel(translations, 'repeat.monthly.months')}
+            </span>
           </div>
         </div>
       </div>
@@ -51,7 +49,6 @@ const RepeatMonthly = ({
             hasMoreModes={!isTheOnlyOneMode('on')}
             handleChange={handleChange}
             translations={translations}
-
           />
         )}
       </div>
@@ -68,9 +65,7 @@ const RepeatMonthly = ({
           />
         )}
       </div>
-
     </React.Fragment>
-
   );
 };
 
@@ -86,7 +81,8 @@ RepeatMonthly.propTypes = {
     }).isRequired,
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired,
 };
 
 export default RepeatMonthly;

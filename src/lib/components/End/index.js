@@ -1,68 +1,71 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import EndAfter from './After';
-import EndOnDate from './OnDate';
+import React from "react";
+import PropTypes from "prop-types";
+import EndAfter from "./After";
+import EndOnDate from "./OnDate";
 
-import translateLabel from '../../utils/translateLabel';
+import translateLabel from "../../utils/translateLabel";
 
 const End = ({
   id,
-  end: {
-    mode,
-    after,
-    onDate,
-    options,
-  },
+  end: { mode, after, onDate, options },
   handleChange,
   translations
 }) => {
-  const isOptionAvailable = option => !options.modes || options.modes.indexOf(option) !== -1;
+  const isOptionAvailable = option =>
+    !options.modes || options.modes.indexOf(option) !== -1;
   const isOptionSelected = option => mode === option;
 
   return (
-    <div className="form-group">
-      <div className="form-row d-flex align-items-center">
+    <React.Fragment>
+      <div className="form-group form-row my-5">
+        <label htmlFor={id} className="col-form-label col-4">
+          {translateLabel(translations, "end.label")}
+        </label>
         <div className="col-3">
-          <label
-            htmlFor={id}
-            className="col-form-label text-boldy"
-          >
-            {translateLabel(translations, 'end.label')}
-          </label>
           <select
             name="end.mode"
             id={id}
-            className="form-control"
+            className="form-control "
             value={mode}
             onChange={handleChange}
           >
-            {isOptionAvailable('Never') && <option value="Never">{translateLabel(translations, 'end.never')}</option>}
-            {isOptionAvailable('After') && <option value="After">{translateLabel(translations, 'end.after')}</option>}
-            {isOptionAvailable('On date') && <option value="On date">{translateLabel(translations, 'end.on_date')}</option>}
+            {isOptionAvailable("Never") && (
+              <option value="Never">
+                {translateLabel(translations, "end.never")}
+              </option>
+            )}
+            {isOptionAvailable("After") && (
+              <option value="After">
+                {translateLabel(translations, "end.after")}
+              </option>
+            )}
+            {isOptionAvailable("On date") && (
+              <option value="On date">
+                {translateLabel(translations, "end.on_date")}
+              </option>
+            )}
           </select>
         </div>
 
-        {
-          isOptionSelected('After') &&
+        {isOptionSelected("After") && (
           <EndAfter
             id={`${id}-after`}
             after={after}
             handleChange={handleChange}
             translations={translations}
           />
-        }
+        )}
 
-        {
-          isOptionSelected('On date') &&
+        {isOptionSelected("On date") && (
           <EndOnDate
             id={`${id}-onDate`}
             onDate={onDate}
             handleChange={handleChange}
             translations={translations}
           />
-        }
+        )}
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
@@ -73,12 +76,13 @@ End.propTypes = {
     after: PropTypes.number.isRequired,
     onDate: PropTypes.object.isRequired,
     options: PropTypes.shape({
-      modes: PropTypes.arrayOf(PropTypes.oneOf(['Never', 'After', 'On date'])),
-      weekStartsOnSunday: PropTypes.bool,
-    }).isRequired,
+      modes: PropTypes.arrayOf(PropTypes.oneOf(["Never", "After", "On date"])),
+      weekStartsOnSunday: PropTypes.bool
+    }).isRequired
   }).isRequired,
   handleChange: PropTypes.func.isRequired,
-  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
+  translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
+    .isRequired
 };
 
 export default End;
