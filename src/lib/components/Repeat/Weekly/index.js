@@ -47,7 +47,8 @@ const RepeatWeekly = ({
             <label
               htmlFor={`${id}-${dayName}`}
               key={dayName}
-              className={`col btn btn-outline-primary ${
+              style={{ width: "14.28%" }}
+              className={`btn btn-outline-primary ${
                 isDayActive ? "active" : " "
               }`}
             >
