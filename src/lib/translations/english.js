@@ -1,6 +1,7 @@
 export default {
   locale: 'en-gb',
-  invalid_rrule: "You provided an invalid RRule value to component. '%{value}' is not a correct RRule string.",
+  invalid_rrule:
+    "You provided an invalid RRule value to component. '%{value}' is not a correct RRule string.",
   months: {
     jan: 'Jan',
     feb: 'Feb',
@@ -25,6 +26,7 @@ export default {
     sun: 'Sun',
   },
   days: {
+    label: 'On this day of the week',
     monday: 'Monday',
     tuesday: 'Tuesday',
     wednesday: 'Wednesday',
@@ -44,7 +46,7 @@ export default {
     last: 'Last',
   },
   start: {
-    label: 'Start',
+    label: 'Email Start Date',
     tooltip: 'Datetime picker for start on date',
   },
   repeat: {
@@ -57,14 +59,14 @@ export default {
     },
     monthly: {
       label: 'Monthly',
-      every: 'every',
+      every: 'Every',
       months: 'month(s)',
-      on_day: 'on day',
+      on_day: 'on this day',
       on_the: 'on the',
     },
     weekly: {
       label: 'Weekly',
-      every: 'every',
+      every: 'Every',
       weeks: 'week(s)',
     },
     daily: {
@@ -79,11 +81,11 @@ export default {
     },
   },
   end: {
-    label: 'End',
+    label: 'Stop sending email',
     tooltip: 'Datetime picker for end on date',
     never: 'Never',
     after: 'After',
     on_date: 'On date',
     executions: 'executions.',
   },
-}
+};

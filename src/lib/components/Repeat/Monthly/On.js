@@ -15,7 +15,7 @@ const RepeatMonthlyOn = ({
 
   return (
     <React.Fragment>
-      <div className="form-group form-row d-flex align-items-center">
+      <div className="form-group form-row d-flex align-items-center mb-0">
         <div className="col-3">
           {hasMoreModes && (
             <div className="custom-control custom-radio custom-control-inline">
@@ -29,10 +29,7 @@ const RepeatMonthlyOn = ({
                 onChange={handleChange}
                 className="custom-control-input"
               />
-              <label
-                htmlFor={id}
-                className="custom-control-label text-capitalize text-boldy"
-              >
+              <label htmlFor={id} className="custom-control-label">
                 {translateLabel(translations, 'repeat.monthly.on_day')}
               </label>
             </div>
@@ -56,6 +53,9 @@ const RepeatMonthlyOn = ({
             ))}
           </select>
         </div>
+      </div>
+      <div className="col text-brand-soft">
+        <i>Or</i>
       </div>
     </React.Fragment>
   );
