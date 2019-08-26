@@ -40,7 +40,7 @@ const RepeatMonthly = ({
         </div>
       </div>
 
-      <div className="form-group">
+      <div className="form-group mb-0">
         {isOptionAvailable('on') && (
           <RepeatMonthlyOn
             id={`${id}-on`}
