@@ -49,6 +49,7 @@ const EndOnDate = ({
             id: `${id}-datetime`,
             name: 'end.onDate.date',
             readOnly: true,
+            className: 'bg-white form-control',
           }}
           locale={translateLabel(translations, 'locale')}
           timeFormat={false}

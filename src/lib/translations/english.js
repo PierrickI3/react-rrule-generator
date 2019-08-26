@@ -46,7 +46,7 @@ export default {
     last: 'Last',
   },
   start: {
-    label: 'Email Start Date',
+    label: 'Email start date',
     tooltip: 'Datetime picker for start on date',
   },
   repeat: {
