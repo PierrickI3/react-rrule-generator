@@ -68,12 +68,15 @@ class ReactRRuleGenerator extends PureComponent {
         )}
 
         {!options.hideStart && (
-          <Start
-            id={`${id}-start`}
-            start={start}
-            handleChange={this.handleChange}
-            translations={this.props.translations}
-          />
+          <React.Fragment>
+            <Start
+              id={`${id}-start`}
+              start={start}
+              handleChange={this.handleChange}
+              translations={this.props.translations}
+            />
+            {this.props.startTimeComponent && <this.props.startTimeComponent />}
+          </React.Fragment>
         )}
 
         <Repeat
@@ -112,6 +115,7 @@ ReactRRuleGenerator.propTypes = {
   onChange: PropTypes.func,
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  startTimeComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
   id: null,
@@ -120,6 +124,7 @@ ReactRRuleGenerator.defaultProps = {
   onChange() {},
   calendarComponent: null,
   translations: translations.english,
+  startTimeComponent: null,
 };
 
 export default ReactRRuleGenerator;
