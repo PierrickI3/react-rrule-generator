@@ -43,6 +43,7 @@ const StartOnDate = ({
       ) : (
         <DateTime
           {...calendarAttributes}
+          className="readonly-bg-white"
           inputProps={{
             id: `${id}-datetime`,
             name: 'start.onDate.date',

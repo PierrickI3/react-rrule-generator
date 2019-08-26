@@ -51,6 +51,7 @@ const EndOnDate = ({
             readOnly: true,
             className: 'bg-white form-control',
           }}
+          className="readonly-bg-white"
           locale={translateLabel(translations, 'locale')}
           timeFormat={false}
           viewMode="days"
