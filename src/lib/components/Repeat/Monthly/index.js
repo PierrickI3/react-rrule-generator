@@ -20,7 +20,7 @@ const RepeatMonthly = ({
   return (
     <React.Fragment>
       <div className="form-group form-row d-flex align-items-center">
-        <div className="col-form-label col-3 text-capitalize">
+        <div className="form-control-label col-3 text-capitalize">
           {translateLabel(translations, 'repeat.monthly.every')}
         </div>
         <div className="input-group col-4">
@@ -53,7 +53,7 @@ const RepeatMonthly = ({
         )}
       </div>
 
-      <div className="form-group">
+      <div className="form-group  mb-5">
         {isOptionAvailable('on the') && (
           <RepeatMonthlyOnThe
             id={`${id}-onThe`}

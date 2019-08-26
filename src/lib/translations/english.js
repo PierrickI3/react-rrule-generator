@@ -54,15 +54,15 @@ export default {
     yearly: {
       label: 'Yearly',
       on: 'on',
-      on_the: 'on the',
+      on_the: 'On the',
       of: 'of',
     },
     monthly: {
       label: 'Monthly',
       every: 'Every',
       months: 'month(s)',
-      on_day: 'on this day',
-      on_the: 'on the',
+      on_day: 'On this day',
+      on_the: 'On the',
     },
     weekly: {
       label: 'Weekly',
