@@ -1,15 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import numericalFieldHandler from '../../utils/numericalFieldHandler';
-import translateLabel from '../../utils/translateLabel';
+import React from "react";
+import PropTypes from "prop-types";
+import numericalFieldHandler from "../../utils/numericalFieldHandler";
+import translateLabel from "../../utils/translateLabel";
 
-const EndAfter = ({
- id, after, handleChange, translations 
-}) => (
+const EndAfter = ({ id, after, handleChange, translations }) => (
   <React.Fragment>
     <div className="col-2">
       <div className="col-form-label text-capitalize sr-only">
-        {translateLabel(translations, 'end.executions')}
+        {translateLabel(translations, "end.executions")}
       </div>
       <input
         id={id}
@@ -28,7 +26,7 @@ EndAfter.propTypes = {
   after: PropTypes.number.isRequired,
   handleChange: PropTypes.func.isRequired,
   translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
-    .isRequired,
+    .isRequired
 };
 
 export default EndAfter;

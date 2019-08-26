@@ -11,7 +11,7 @@ const Start = ({
     <label htmlFor={id} className="col-form-label col-3">
       {translateLabel(translations, 'start.label')}
     </label>
-    <div className="col-9">
+    <div className="col-9 readonly-bg-white">
       <StartOnDate
         id={id}
         onDate={onDate}
