@@ -86,6 +86,8 @@ class ReactRRuleGenerator extends PureComponent {
           translations={this.props.translations}
         />
 
+        {this.props.periodComponent && <this.props.periodComponent />}
+
         {!options.hideEnd && (
           <End
             id={`${id}-end`}
@@ -116,6 +118,7 @@ ReactRRuleGenerator.propTypes = {
   calendarComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   startTimeComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  periodComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 };
 ReactRRuleGenerator.defaultProps = {
   id: null,
@@ -125,6 +128,7 @@ ReactRRuleGenerator.defaultProps = {
   calendarComponent: null,
   translations: translations.english,
   startTimeComponent: null,
+  periodComponent: null,
 };
 
 export default ReactRRuleGenerator;
