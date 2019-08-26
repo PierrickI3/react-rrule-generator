@@ -25,7 +25,7 @@ const EndOnDate = ({
   };
 
   return (
-    <div className="col-4 ">
+    <div className="col-4">
       <div className="col-form-label text-capitalize sr-only">Date</div>
       {CustomCalendar ? (
         <CustomCalendar

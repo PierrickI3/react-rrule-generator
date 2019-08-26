@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import numericalFieldHandler from '../../../utils/numericalFieldHandler';
-import translateLabel from '../../../utils/translateLabel';
+import React from "react";
+import PropTypes from "prop-types";
+import numericalFieldHandler from "../../../utils/numericalFieldHandler";
+import translateLabel from "../../../utils/translateLabel";
 
 const RepeatMonthlyOn = ({
   id,
@@ -9,13 +9,13 @@ const RepeatMonthlyOn = ({
   on,
   hasMoreModes,
   handleChange,
-  translations,
+  translations
 }) => {
-  const isActive = mode === 'on';
+  const isActive = mode === "on";
 
   return (
     <React.Fragment>
-      <div className="form-group form-row d-flex align-items-center mb-0">
+      <div className="form-group form-row d-flex align-items-center">
         <div className="col-3">
           {hasMoreModes && (
             <div className="custom-control custom-radio custom-control-inline">
@@ -30,13 +30,13 @@ const RepeatMonthlyOn = ({
                 className="custom-control-input"
               />
               <label htmlFor={id} className="custom-control-label">
-                {translateLabel(translations, 'repeat.monthly.on_day')}
+                {translateLabel(translations, "repeat.monthly.on_day")}
               </label>
             </div>
           )}
         </div>
 
-        <div className={`col-3 ${!isActive && 'opacity-50'}`}>
+        <div className={`col-3 ${!isActive && "opacity-50"}`}>
           <select
             id={`${id}-day`}
             name="repeat.monthly.on.day"
@@ -54,22 +54,19 @@ const RepeatMonthlyOn = ({
           </select>
         </div>
       </div>
-      <div className="col text-brand-soft">
-        <i>Or</i>
-      </div>
     </React.Fragment>
   );
 };
 RepeatMonthlyOn.propTypes = {
   id: PropTypes.string.isRequired,
-  mode: PropTypes.oneOf(['on', 'on the']).isRequired,
+  mode: PropTypes.oneOf(["on", "on the"]).isRequired,
   on: PropTypes.shape({
-    day: PropTypes.number.isRequired,
+    day: PropTypes.number.isRequired
   }).isRequired,
   hasMoreModes: PropTypes.bool.isRequired,
   handleChange: PropTypes.func.isRequired,
   translations: PropTypes.oneOfType([PropTypes.object, PropTypes.func])
-    .isRequired,
+    .isRequired
 };
 
 export default RepeatMonthlyOn;
